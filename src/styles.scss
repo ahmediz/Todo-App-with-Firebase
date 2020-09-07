@@ -245,6 +245,18 @@ app-tasks-list {
     right: -5px;
     transform: translateX(100%);
   }
+
+  @media all and (max-width: 767px) {
+    opacity: 1;
+    visibility: visible;
+    left: 3px;
+    background: none !important;
+    [dir="rtl"] & {
+      left: inherit;
+      right: 3px;
+    }
+
+  }
 }
 
 .dir-btns {
