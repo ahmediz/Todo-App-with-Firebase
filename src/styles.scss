@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 @import "./assets/scss/variables";
 @import "./assets/scss/buttons";
 @import "./assets/scss/form";
@@ -24,10 +24,11 @@ button[disabled] {
   opacity: 0.7;
 }
 .global-wrapper {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 60px 0;
 }
 app-tasks-list {
   width: 100%;
@@ -83,6 +84,12 @@ app-tasks-list {
         margin-left: 0;
       }
     }
+    @media all and (max-width: 375px) {
+      margin-bottom: 30px;
+    }
+  }
+  @media all and (max-width: 991px) {
+    padding-bottom: 50px;
   }
 
   @media all and (max-width: 530px) {
@@ -91,7 +98,7 @@ app-tasks-list {
   }
 
   @media all and (max-width: 375px) {
-    padding: 15px 15px 50px;
+    padding: 30px;
   }
 }
 
@@ -118,6 +125,7 @@ app-tasks-list {
     padding-top: 3px;
     font-family: $mainFont;
     font-size: 15px;
+    min-width: 0;
     &:focus {
       border-color: $primaryColor;
     }
@@ -127,12 +135,14 @@ app-tasks-list {
       padding-left: 0;
       padding-right: 15px;
     }
+    @media all and (max-width: 375px) {
+      font-size: 13px;
+    }
   }
 
   .actions {
     display: flex;
     align-items: center;
-    margin-left: auto;
     > button {
       margin-right: 10px;
       [dir="rtl"] & {
@@ -140,10 +150,11 @@ app-tasks-list {
         margin-left: 10px;
       }
     }
-    [dir="rtl"] & {
-      margin-right: auto;
-      margin-left: 0;
-    }
+  }
+
+  @media all and (max-width: 530px) {
+    margin: 0 15px 15px;
+    width: auto;
   }
 }
 
@@ -162,6 +173,18 @@ app-tasks-list {
   transform: translate(-50%, 50%);
   &:hover {
     filter: brightness(1.1);
+  }
+  @media all and (max-width: 991px) {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    left: inherit;
+    transform: none;
+
+    [dir="rtl"] & {
+      right: inherit;
+      left: 15px;
+    }
   }
   @media all and (max-width: 375px) {
     width: 50px;

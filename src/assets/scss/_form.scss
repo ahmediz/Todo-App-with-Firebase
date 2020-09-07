@@ -48,7 +48,8 @@
       width: 30px;
       height: 30px;
       right: 0;
-      top: 0;
+      top: 50%;
+      margin-top: -15px;
       display: grid;
       place-items: center;
       color: $primaryColor;
