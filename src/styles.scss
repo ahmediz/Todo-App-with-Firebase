@@ -1,1 +1,253 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import "./assets/scss/variables";
+@import "./assets/scss/buttons";
+@import "./assets/scss/form";
+
+* {
+  box-sizing: border-box;
+}
+body {
+  background: $bodyBg;
+  font-family: $mainFont;
+  line-height: 1;
+  color: $bodyTextColor;
+  margin: 0;
+}
+input,
+button,
+a {
+  transition: 0.3s;
+}
+
+button[disabled] {
+  pointer-events: none;
+  opacity: 0.7;
+}
+.global-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+app-tasks-list {
+  width: 100%;
+}
+
+// To DO List
+.to-do-list {
+  background: white;
+  box-shadow: 1px 2px 4px rgba($color: #000000, $alpha: 0.1);
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px;
+  position: relative;
+  padding-bottom: 80px;
+
+  .date {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    .full-date {
+      display: flex;
+      align-items: center;
+      span {
+        display: block;
+        font-size: 12px;
+        font-weight: 400;
+        color: $lightTextColor;
+        &.month {
+          font-weight: 500;
+          text-transform: uppercase;
+          margin-bottom: 5px;
+          color: $bodyTextColor;
+        }
+      }
+      .day-no {
+        font-size: 30px;
+        font-weight: 500;
+        margin-right: 10px;
+        color: $bodyTextColor;
+        [dir="rtl"] & {
+          margin-right: 0;
+          margin-left: 10px;
+        }
+      }
+    }
+    .day-title {
+      margin-left: auto;
+      text-transform: uppercase;
+      font-weight: 500;
+      [dir="rtl"] & {
+        margin-right: auto;
+        margin-left: 0;
+      }
+    }
+  }
+
+  @media all and (max-width: 530px) {
+    margin: 0 15px;
+    width: auto;
+  }
+
+  @media all and (max-width: 375px) {
+    padding: 15px 15px 50px;
+  }
+}
+
+// Tasks Form
+.tasks-form {
+  background: white;
+  box-shadow: 1px 2px 4px rgba($color: #000000, $alpha: 0.1);
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto 30px;
+  display: flex;
+  align-items: center;
+
+  input {
+    height: 50px;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    padding: 0;
+    padding-left: 15px;
+    flex: 1;
+    margin-right: 10px;
+    outline: 0;
+    appearance: none;
+    padding-top: 3px;
+    font-family: $mainFont;
+    font-size: 15px;
+    &:focus {
+      border-color: $primaryColor;
+    }
+    [dir="rtl"] & {
+      margin-right: 0;
+      margin-left: 10px;
+      padding-left: 0;
+      padding-right: 15px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    > button {
+      margin-right: 10px;
+      [dir="rtl"] & {
+        margin-right: 0;
+        margin-left: 10px;
+      }
+    }
+    [dir="rtl"] & {
+      margin-right: auto;
+      margin-left: 0;
+    }
+  }
+}
+
+.add-new-task {
+  width: 70px;
+  height: 70px;
+  background: $primaryColor;
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+  color: rgba($color: #000000, $alpha: 0.3);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  box-shadow: 0 3px 6px rgba($color: #000000, $alpha: 0.16);
+  transform: translate(-50%, 50%);
+  &:hover {
+    filter: brightness(1.1);
+  }
+  @media all and (max-width: 375px) {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+  }
+}
+
+// Tasks
+.tasks {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 30px;
+}
+.task {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  h3 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 500;
+  }
+  .custom-checkbox {
+    margin-left: auto;
+    [dir="rtl"] & {
+      margin-right: auto;
+      margin-left: 0;
+    }
+  }
+  &.finished {
+    .custom-checkbox {
+      color: $fadedTextColor;
+      span {
+        text-decoration: line-through;
+      }
+    }
+  }
+  &:hover:not(.finished) {
+    .edit-task {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.edit-task {
+  position: absolute;
+  left: -5px;
+  top: 0;
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: hidden;
+
+  [dir="rtl"] & {
+    left: inherit;
+    right: -5px;
+    transform: translateX(100%);
+  }
+}
+
+.dir-btns {
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  direction: ltr;
+  > button {
+    padding: 5px 10px;
+    background: white;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: $mainFont;
+    &:first-child {
+      border-radius: 4px 0 0 4px;
+    }
+    &:last-child {
+      border-radius: 0 4px 4px 0;
+    }
+    &.active {
+      background: $primaryColor;
+      color: white;
+    }
+  }
+  [dir="rtl"] & {
+    right: inherit;
+    left: 15px;
+  }
+}

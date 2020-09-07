@@ -1,0 +1,63 @@
+// Checkbox
+.custom-checkbox {
+  display: flex;
+  width: 100%;
+  input {
+    display: none;
+    &:checked ~ span {
+      &:before {
+        border-color: $primaryColor;
+      }
+      &:after {
+        transform: scale(1);
+      }
+    }
+  }
+  > span {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: row-reverse;
+    line-height: 1.5;
+    span {
+      flex: 1;
+    }
+    &:before {
+      content: "";
+      display: block;
+      min-width: 30px;
+      width: 30px;
+      height: 30px;
+      border: 3px solid $borderColor;
+      border-radius: 50%;
+      transition: 0.3s;
+      margin-left: 15px;
+      box-sizing: border-box;
+      [dir="rtl"] & {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      background: url('/assets/images/carrot.svg') no-repeat center;
+      background-size: 12px;
+      min-width: 30px;
+      width: 30px;
+      height: 30px;
+      right: 0;
+      top: 0;
+      display: grid;
+      place-items: center;
+      color: $primaryColor;
+      transform: scale(0);
+      transition: 0.3s;
+      [dir="rtl"] & {
+        right: inherit;
+        left: 0;
+      }
+    }
+  }
+}

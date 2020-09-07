@@ -1,0 +1,51 @@
+.btn-reset {
+  border: 0;
+  appearance: none;
+  outline: 0;
+  cursor: pointer;
+  padding: 0;
+}
+.btn-icon {
+  @extend .btn-reset;
+  min-width: 35px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.btn-red {
+    background: rgba($color: $red, $alpha: 0.1);
+    svg {
+      fill: $red;
+    }
+    &:hover {
+      background: rgba($color: $red, $alpha: 0.2);
+    }
+  }
+
+  &.btn-green {
+    background: rgba($color: $primaryColor, $alpha: 0.1);
+    svg {
+      fill: $primaryColor;
+    }
+    &:hover {
+      background: rgba($color: $primaryColor, $alpha: 0.2);
+    }
+  }
+
+  &.btn-blue {
+    background: rgba($color: $blue, $alpha: 0.1);
+    svg {
+      fill: $blue;
+    }
+    &:hover {
+      background: rgba($color: $blue, $alpha: 0.2);
+    }
+  }
+}

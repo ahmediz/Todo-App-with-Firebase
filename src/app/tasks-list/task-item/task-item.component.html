@@ -1,0 +1,13 @@
+<div class="task" [class.finished]="item.done">
+  <button type="button" class="btn-icon btn-blue edit-task" (click)="edit()">
+    <svg viewBox="0 0 512 512">
+      <use xlink:href="assets/images/sprite.svg#edit"></use>
+   </svg>
+  </button>
+  <label for="{{'task' + index}}" class="custom-checkbox" (click)="finishTask(item)">
+    <input type="checkbox" id="{{'task' + index}}" [checked]="item.done" />
+    <span>
+      <span>{{ item.title }}</span>
+    </span>
+  </label>
+</div>

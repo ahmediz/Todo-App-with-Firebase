@@ -1,0 +1,31 @@
+<form #taskForm="ngForm" class="tasks-form">
+  <input
+    type="text"
+    placeholder="Enter Task Name"
+    name="taskTitle"
+    autocomplete="off"
+    [(ngModel)]="taskTitle"
+    required
+  />
+  <div class="actions">
+    <button
+      type="button"
+      class="btn-icon btn-red"
+      (click)="tasksService.selectedTask.next(null)"
+    >
+      <svg viewBox="0 0 320 512">
+        <use xlink:href="assets/images/sprite.svg#cancel"></use>
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="btn-icon btn-green"
+      (click)="addNewTask()"
+      [disabled]="!taskForm.form.valid"
+    >
+      <svg viewBox="0 0 320 512">
+        <use xlink:href="assets/images/sprite.svg#check"></use>
+      </svg>
+    </button>
+  </div>
+</form>

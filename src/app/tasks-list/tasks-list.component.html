@@ -1,0 +1,26 @@
+<app-add-new-task
+  *ngIf="showForm"
+  [selectedTask]="selectedTask"
+></app-add-new-task>
+<div class="to-do-list">
+  <div class="date">
+    <time class="full-date">
+      <span class="day-no">{{ getDate() | date: "dd" }}</span>
+      <span>
+        <span class="month">{{ getDate() | date: "MMM" }}</span>
+        <span class="year">{{ getDate() | date: "yyyy" }}</span>
+      </span>
+    </time>
+    <span class="day-title">{{ getDate() | date: "EEEE" }}</span>
+  </div>
+  <div class="tasks">
+    <app-task-item
+      *ngFor="let task of tasks$ | async; let i = index"
+      [item]="task"
+      [index]="i"
+    ></app-task-item>
+  </div>
+  <button type="button" class="btn-icon add-new-task" (click)="addTask()">
+    +
+  </button>
+</div>
